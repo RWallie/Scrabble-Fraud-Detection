@@ -1,0 +1,19 @@
+#home {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#green {
+  color: rgb(0, 207, 0);
+}
+
+#red {
+  color: red;
+}
+
+.coefs {
+  border-bottom: solid;
+}
