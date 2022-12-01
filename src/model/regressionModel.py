@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import make_pipeline
+from sklearn.pipeline import Pipeline
 from sklearn.linear_model import  Ridge
 import pickle
 
@@ -17,7 +17,13 @@ def read_in_csv_and_fit_model():
 
   # use best model from testing -> pipeline with StandardScaler and Ridge Regression, 
   # (alpha, score) = (157.48999999999864, 0.6414347163989611)
-  ridgePipe = make_pipeline(StandardScaler(), Ridge(alpha = 157.48999999999864))
+  # use pipeline to have access to coeficients later
+  
+  # standard scaler didn't provide any optimal results and lost ability to provide presentation 
+  # of coefficients - ended up removing to allow display of coefficient percentages towards predicted outcome
+  # ridgePipe = Pipeline(steps=[('scl', StandardScaler()),('ridge', Ridge(alpha=157.48999999999864))])
+
+  ridgePipe = Pipeline(steps=[('ridge', Ridge(alpha=157.48999999999864))])
 
   # fit the model on training data
   ridgePipe.fit(X, y)
